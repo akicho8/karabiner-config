@@ -2,6 +2,41 @@
   "title": "ブラウザ操作",
   "rules": [
     {
+      "description": "Emacs の外でも ^Y でペースト",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ],
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": [
+                "right_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^org\\.gnu\\.Emacs$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "description": "ブラウザでは [英数] + H で前の単語を削除",
       "manipulators": [
         {
