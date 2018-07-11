@@ -232,6 +232,49 @@
       ]
     },
     {
+      "description": "ブラウザでは [英数] + SPACE  でタブを固定化する",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ],
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "vk_none"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.google\\.Chrome$",
+                "^com\\.apple\\.Safari$",
+                "^org\\.mozilla\\.firefox$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "description": "ブラウザでは C-g で [ESC]",
       "manipulators": [
         {
